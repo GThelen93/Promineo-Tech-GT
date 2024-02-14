@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!--The line below also references back to the bootstrap layout instead of css-->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <!--You can use the <style> below to add color and padding to a heading or body-->
+    <style>
+        div{
+            border-style: solid;
+            border-color: Aqua;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body class="container">
+<!--This navbar allows you to expand the drop down or move back and forth between the 3 headings-->
+<!--You can also add a link to each one of the headings if you wanted them to take you to a different page-->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="index5.html">Shark Type</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controle="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+               <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:5500/index6.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sightings</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                </a>
+                <!--This is what shows up when you hit the "dropdown"-->
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Page One</a>
+                  <a class="dropdown-item" href="#">Page Two</a>
+                  <a class="dropdown-item" href="#">Page Three</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    </nav>
+
+
+
+    <script src="node__modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
