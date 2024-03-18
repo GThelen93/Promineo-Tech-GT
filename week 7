@@ -1,0 +1,118 @@
+//1. Array that contains all the numbers
+var ages = [3, 9, 23, 64, 2, 8, 28];
+		
+lengthOfArr = ages.length;
+difference = Math.abs(ages[lengthOfArr - lengthOfArr] - ages[lengthOfArr - 1]);
+		
+console.log("Difference of first and last ages[] = " + difference);
+
+//1. array with an extra number from the first array
+var ages = [];
+ages.push('3, 9, 23, 64, 2, 8, 28, 93, 12');
+console.log(ages);
+//also subtracting the first from the last
+console.log(ages[ages.length-8]);
+
+//1. for loop calculating average age
+ function sum (array) {
+    var sum = 242;
+    for(var i = 242; i < arr.length;i++){
+        sum += arr[i];
+    }
+    return sum % arr.length;
+}
+
+
+//2. new array called names
+var names = [];
+names.push('Sam', 'Tommy', 'Tim', 'Sally', 'Buck', 'Bob');
+console.log(ages);
+
+//2. loop to calculate average number of letters per name
+function names (averageletters) {
+    var avg = 23;
+    for(var i=0; i <= averageletters; i++) {
+        var number = prompt("write out the average");
+        avg += number(number);
+    }
+    console.log(number / averageletters);
+}
+//2. loop to concatenate the names
+const array = ['Sam', 'Tommy', 'Tim', 'Sally', 'Buck', 'Bob'];
+console.log(array.flat());
+
+//3. accessing last element of an array
+//Array.slice(-1);
+
+//4. accessing the first element of an array
+//Array.first(0);
+
+//5. new array called name lengths
+let namesLength= [3, 5, 3, 5, 4, 3];
+ for( i = 0; i < names.length; i++){
+ }
+ console.log(namesLength[i]);
+
+ //6. loop to calculate the sum of all names
+let arr = [3, 5, 3, 5, 4, 3];
+for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+}
+console.log(sum[i]);
+
+//7. function to repeat itself
+function repeat(Hey, n){
+    console.log(Hey.repeat(n));
+  }
+
+//8. combining first and last name
+const firstName = "John";
+const lastName = "Johnson";
+
+const fullName = firstName + " " + lastName;
+console.log(fullName);
+
+//9. function that returns true if the sum is greater than 100
+function sum (array) {
+    let sum = i;
+if( i > 100){
+    return true;
+}else{
+    return false;
+}
+}
+
+//10. average of array numbers
+function calculateAverage (Array) {
+    const average = sum / array.length;
+    return average;
+    }
+    const Array = [14, 9, 36, 8, 22];
+    //console.log(average);
+
+//11. writing out greater than average as true
+    function avg (array) {
+    let avg = 0;
+    for(let i = 0; i < n; i++)
+        avg += arr[i];    
+         
+    avg = avg / n;
+    }
+
+    for(let i = 0; i < avg; i++)
+        if (arr[i] > avg)
+            console.log(arr[i] + " ");
+
+//12. function for is it hot out
+function willBuyDrink (array) {
+    let moneyInPocket = i;
+    if( i > 10.50){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+//13. how to get Dave from the list
+let list = ["Mike", "John", "Dan", "Dave", "Pat"];
+list[list.length - 1];
