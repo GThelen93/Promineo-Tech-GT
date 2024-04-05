@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <h1>
+        Car Form 
+    </h1>
+    </head>
+    <br></br>
+    <form>
+        <div class="form-group row">
+          <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="Name" class="form-control" id="inputName3" placeholder="Your Name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputBrand3" class="col-sm-2 col-form-label">Brand</label>
+          <div class="col-sm-10">
+            <input type="Brand" class="form-control" id="inputBrand3" placeholder="Choose Brand">
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Car Make</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="gridCars" id="gridCars1">
+                <label class="form-check-label" for="gridCars1">
+                  Corvette
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="gridCars" id="gridCars2" value="option2">
+                <label class="form-check-label" for="gridCars2">
+                  Daytona
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="gridCars" id="gridCars3" value="option3">
+                <label class="form-check-label" for="gridCars3">
+                  750S
+                </label>
+              </div>
+            </div>
+          </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+  </html>
+
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="styles.css">
+    <table class="table">
+        <th>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Name</th>
+            <th scope="col">Year</th>
+          </tr>
+        </th>
+        <body>
+          <tr>
+            <th scope="row">1</th>
+            <td>Chevy</td>
+            <td>Corvette</td>
+            <td>2024</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Ferrari</td>
+            <td>Dayton</td>
+            <td>2024</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>McLaren</td>
+            <td> 750S </td>
+            <td>2024</td>
+          </tr>
+        </body>
+      </table>
+      <br/>
+      <a rel="noopener" target="_blank" href="http://127.0.0.1:5500/index8.html"> Car Form.</a><br>
+</html>
