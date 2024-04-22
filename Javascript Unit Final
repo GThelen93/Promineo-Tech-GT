@@ -1,0 +1,143 @@
+//tic tac toe 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="styles3.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tic Tac Toe</h1>
+    <div id="board" class="board">
+    </div>
+    <button id="reset">Reset</button>
+    <p id="message"></p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+//style3.css
+
+.container {
+    text-align: center;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+  }
+  
+  .cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+  }
+  
+  button {
+    font-size: 1em;
+    padding: 10px 20px;
+    margin-top: 20px;
+  }
+  
+  .win {
+    background-color: lightgreen;
+  }
+  
+  .draw {
+    background-color: lightgray;
+  }
+
+
+//script.js
+document.addEventListener("DOMContentLoaded", () => {
+    const board = document.getElementById("board");
+    const cells = Array.from({ length: 9 }, (_, index) => {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.dataset.index = index;
+      cell.addEventListener("click", handleCellClick);
+      board.appendChild(cell);
+      return cell;
+    });
+    const resetButton = document.getElementById("reset");
+    resetButton.addEventListener("click", resetGame);
+  
+    let currentPlayer = "X";
+    let gameActive = true;
+  
+    const winningCombinations = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+  
+    function handleCellClick(event) {
+      const cell = event.target;
+      const index = parseInt(cell.dataset.index);
+  
+      if (cells[index].innerText || !gameActive) return;
+  
+      cells[index].innerText = currentPlayer;
+      if (checkWin()) {
+        endGame(false);
+      } else if (checkDraw()) {
+        endGame(true);
+      } else {
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+      }
+    }
+  
+    function checkWin() {
+      return winningCombinations.some(combination => {
+        return combination.every(index => {
+          return cells[index].innerText === currentPlayer;
+        });
+      });
+    }
+  
+    function checkDraw() {
+      return cells.every(cell => {
+        return cell.innerText !== "";
+      });
+    }
+  
+    function endGame(draw) {
+      gameActive = false;
+      if (draw) {
+        setMessage("It's a draw!");
+        board.classList.add("draw");
+      } else {
+        setMessage(`Player ${currentPlayer} wins!`);
+        board.classList.add("win");
+      }
+    }
+  
+    function setMessage(message) {
+      const messageElement = document.getElementById("message");
+      messageElement.innerText = message;
+    }
+  
+    function resetGame() {
+      currentPlayer = "X";
+      gameActive = true;
+      setMessage("");
+      board.classList.remove("win", "draw");
+      cells.forEach(cell => {
+        cell.innerText = "";
+      });
+    }
+  });
