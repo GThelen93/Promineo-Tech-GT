@@ -1,0 +1,281 @@
+//war game
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>GT War Game</title>
+	<link rel="stylesheet" href="style3.css">
+	<script src="index3.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row bump">
+		</div>
+		<div class="row">
+			<div class ="col-xs-10">
+				<button id="nextgame"> Next Game </button>
+				<div class="col-xs-8 col-xs-offset-4" id="gameStatus">
+				</div>
+			</div>
+				<div class="row">
+					<div class="col-xs-8">
+						<div class="col-xs-8">
+							<br>
+							<div class="p1Deck card"> </div>
+						</div>
+						<div class="col-xs-8">
+							Player1:
+							<br>
+							<div class="p1Card card blank" id="player1Card">  </div>
+							<div class="row">
+								<div class="col-xs-10">
+									<div class="col-xs-4">
+										<div class="lCard"></div>
+									</div>
+									<div class="col-xs-4">
+										<div class="lCard"></div>
+									</div>
+									<div class="col-xs-4">
+										<div class="lCard"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-8">
+						<div class="col-xs-8">
+							Player2:
+							<br>
+							<div class="p2Card card blank" id="player2Card">  </div>
+							<div class="row">
+								<div class="col-xs-10">
+									<div class="col-xs-4">
+										<div class="lCard"></div>
+									</div>
+									<div class="col-xs-4">
+										<div class="lCard"></div>
+									</div>
+									<div class="col-xs-4">
+										<div class="lCard"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-8">
+							<br>
+							<div class="p2Deck card"> </div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-10">
+					<br>
+					<button id="turn over"> turn over </button>
+					<br>
+					<button id="grab">grab</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+//war game index
+
+window = function(){
+
+    function Deck (){
+		this.deck = [];
+    }
+
+    function Card (numb){
+		this.numb = numb;
+		this.name;
+	}
+
+	function Player (){
+		this.deck = [];
+	}
+
+	Deck.test.init = function(){
+		for (var i=1; i <= 13; i++){
+			for (var x=0; x < 3; x++){
+				Card = new Card(i);
+				this.deck.push(Card);
+			}
+		}
+	}
+
+	function shuffle(array) {
+	    for (var i = array.length - 1; i > 0; i--) {
+	        var j = Math.floor(Math.random() * (i + 1));
+	        var temp = array[i];
+	        array[i] = array[j];
+	        array[j] = temp;
+	    }
+	    return array;
+	}
+
+	Deck.test.deal = function(){
+		for (i = 0; i < this.deck.length; i++){
+			if (i%2){
+				player1.deck.push(this.deck[i]);
+			} else {
+				player2.deck.push(this.deck[i]);
+			}
+		}
+	};
+
+	function Game(){
+		this.winner;
+		this.loser;
+	};
+	Game.test.init = function(){
+		player1 = new Player();
+		player2 = new Player();
+		var firstDeck = new Deck();
+		firstDeck.init();
+		shuffle(firstDeck.deck);
+		console.log(firstDeck.deck);
+
+		firstDeck.deal();
+	};
+		game = new Game();
+	game.init();
+
+	$("#newGame").click(function(){
+		game = new Game();
+		game.init();
+		$("#gameStatus").html(" ");
+	});
+
+	var flipped = false;
+
+	$("#flip").click(function(){
+		if (player1.deck.length < 1){
+			$("#gameStatus").html("You lose.");
+		}
+		else if (player2.deck.length < 1){
+			$("#gameStatus").html("You win!");
+		} else {
+			$("#player1Card").removeClass('blank');
+			console.log("removed, maybe?");
+			$("#player2rCard").removeClass('blank');
+			$("#player1Card").html(player1.deck[player.deck.length-1].numb);
+			$("#player2Card").html(player2.deck[player2.deck.length-1].numb);
+		}
+		flipped = true;
+	});
+
+
+	$("#take").click(function(){
+		if (flipped === true){
+			game.compare();
+			$("#player1Card").html(" ");
+			$("#player2Card").html(" ");
+			$("#player1Card").addClass('blank');
+			$("#player2Card").addClass('blank');
+		}
+		flipped = false;
+	});
+	Game.test.compare = function(){
+		var player1Card = player1.deck[player.deck.length-1];
+		var player2Card = player2.deck[player2.deck.length-1];
+		if(player1Card.numb > player2Card.numb){
+			player1.deck.unshift(player2Card);
+			temp = player1.deck.pop();
+			player1.deck.unshift(temp);
+			player2.deck.pop();
+		} else if (player1Card.numb < player2Card.numb){
+			player2.deck.unshift(player1Card);
+			temp = player2.deck.pop();
+			player2.deck.unshift(temp);
+			player1.deck.pop();
+		} else {
+			$("#gameStatus").html("Breaking tie...");
+			flipThree(1);
+		}
+		console.log("Player1 Deck: " + player1.deck.length)
+		console.log("Player2 Deck: " + player2.deck.length)
+
+	}
+	var flipThree = function (start){
+		start = start + 4;
+		var p1Card = player1.deck[player.deck.length-start];
+		var p2Card = player2.deck[player2.deck.length-start];
+		temp = player2.deck.splice(player2.deck.length-(start), player2.deck.length-1);
+		temp2 = player1.deck.splice(player1.deck.length-(start), player1.deck.length-1);
+		if (p1Card.numb > p2Card.numb){
+			for (var i = 0; i < temp1.length; i++){
+				player.deck.unshift(temp1[i]);
+				player.deck.unshift(temp2[i]);
+			}
+		} else if(p1Card.numb < p2Card.numb){
+				for (var i = 0; i < temp.length; i++){
+					player2.deck.unshift(temp2[i]);
+					player2.deck.unshift(temp1[i]);
+				}
+		} else{
+			flipThree(start);
+		}
+	}
+}
+
+//style for war game
+
+.card{
+	padding: 10px 20px 20px 20px;
+	width: 200px;
+	height: 320px;
+    border-radius: 10px;
+}
+.lCard{
+	width:40px;
+	height:60px;
+	border-radius: 4px;
+	background-color: red;
+	margin-left: 6px;
+	margin-top: 10px;
+}
+.col-xs-3{
+	margin-right: -15px;
+}
+.p1Deck{
+	background: blue;
+}
+.p2Deck{
+	background: orangered;
+}
+.p2Card{
+	font-size: 40px;
+	background-color: #ecf0f1;
+	color: #c0392b ;
+	border: solid #c0392b 5px;
+}
+.blank{
+	background-color: green !important;
+	border: none !important;
+}
+
+.p1Card{
+	font-size: 40px;
+	background-color: #ecf0f1;
+	color: #2c3e50;
+	border: solid #2c3e50 5px;
+}
+button{
+
+}
+.bump{
+	margin: 20px;
+}
+#gameStatus{
+	font-size: 100px;
+}
+body{
+	background-color: silver !important;
+}
