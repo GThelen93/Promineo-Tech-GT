@@ -1,0 +1,161 @@
+//car form
+
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="styles2.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Manager</title>
+</head>
+<body>
+  <h1>Car Manager</h1>
+
+  <!-- Search Form -->
+  <form id="searchForm">
+    <input type="text" id="searchInput" placeholder="Enter Car Name">
+    <button type="submit">Search</button>
+  </form>
+
+  
+  <ul id="carlist"></ul>
+
+  <script src="app.js"></script>
+</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Form</title>
+</head>
+<body>
+    <h1>Car Form</h1>
+    <form action="/post_car" method="post">
+        <label for="car_name">Car Name:</label><br>
+        <input type="text" id="car_name" name="car_name" required><br>
+        
+        <label for="brand_type">Brand Name:</label><br>
+        <select id="brand_type" name="brand_type" required>
+            <option value="">Select</option>
+            <option value="bugatti">Bugatti</option>
+            <option value="ferrari">Ferrari</option>
+            <option value="chevrolet">Chevrolet</option>
+        </select><br>
+
+        <label for="car_description">Description:</label><br>
+        <textarea id="car_description" name="car_description" rows="4" cols="50" required></textarea><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update or Delete Car Selection</title>
+</head>
+<body>
+  <h1>Update or Delete Car Selection</h1>
+
+  <!-- List of cars -->
+  <label for="car_list">Select Car:</label><br>
+  <select id="car_list">
+      <option value="">Select</option>
+      <option value="1">Car</option>
+      <option value="2">Car 2</option>
+      <option value="3">Car 3</option>
+  </select><br>
+
+  <!-- Update form -->
+  <div id="update_form" style="display: none;">
+      <h2>Update Car</h2>
+      <label for="updated_name">Updated Name:</label><br>
+      <input type="text" id="updated_name"><br>
+      <button onclick="updateCar()">Update</button>
+  </div>
+
+  <!-- Delete button -->
+  <div id="delete_button" style="display: none;">
+      <h2>Delete Car</h2>
+      <button onclick="deleteCar()">Delete</button>
+  </div>
+
+  <script>
+      document.getElementById("car_list").addEventListener("change", function() {
+          var carId = this.value;
+          if (carId) {
+              document.getElementById("update_form").style.display = "block";
+              document.getElementById("delete_button").style.display = "block";
+          } else {
+              document.getElementById("update_form").style.display = "none";
+              document.getElementById("delete_button").style.display = "none";
+          }
+      });
+
+      function updateCar() {
+          var updatedName = document.getElementById("updated_name").value;
+          console.log("Updating car with name: " + updatedName);
+      }
+      function deleteEntity() {
+          var carId = document.getElementById("car_list").value;
+          console.log("Deleting car with ID: " + carId);
+      }
+  </script>
+</body>
+</html>
+
+//stylespage
+
+body{
+    background-color: forestgreen;
+}
+
+h1{
+    padding-top: 100px;
+    
+    font-family: cursive;
+    color: aqua;
+}
+
+p{
+    color: aquamarine;
+    text-transform: uppercase;
+
+}
+
+li{
+    padding-top: 100px;
+    font-size: 40px;
+    color: red;
+    text-shadow: 0cqw;
+}
+
+a{
+    color: white;
+    text-indent: 40px;
+    font-size: 25px;
+}
+
+td{
+    padding-top: 100px;
+    font-size: 40px;
+    color: green;
+}
+
+img{
+    color: antiquewhite;
+}
+
+label{
+    color: royalblue;
+}
+
+form{
+    color: beige;
+}
+
+th{
+    color: red;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
