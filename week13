@@ -1,0 +1,102 @@
+//app.css
+
+import React from 'react';
+import './App.css';
+import Navigation from './Navigation';
+import LoginForm from './loginform';
+
+function App() {
+  return (
+    <div className="App">
+      <Navigation />
+      <LoginForm />
+    </div>
+  );
+}
+
+export default App;
+
+
+//login.css
+
+.login-form {
+  border: 1px solid black;
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.login-heading {
+  text-align: center;
+}
+
+
+//loginform.js
+
+const LoginForm = () => {
+  return (
+    <div className="login-form">
+      <h3 className="login-heading">Log In</h3>
+      <form>
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input type="text" id="username" name="username" />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default LoginForm;
+
+
+//nav.css
+
+.navbar {
+    background-color: #333;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .navbar ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar ul li a:hover {
+    text-decoration: underline;
+  }
+
+
+//nav.js
+
+import React from 'react';
+import './Navigation.css';
+
+const Navigation = () => {
+  return (
+    <nav className="navbar">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navigation;
+
