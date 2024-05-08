@@ -1,0 +1,90 @@
+import React, { useState } from 'react';
+
+const Movie = ({ movie }) => {
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState('');
+
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    setReviews([...reviews, newReview]);
+    setNewReview('');
+  };
+
+  return (
+    <div className="movie">
+      <img src={movie.imageUrl} alt={movie.title} />
+      <h2>{movie.title}</h2>
+      <p>{movie.synopsis}</p>
+      <p>Rating: {movie.rating}</p>
+
+      <ReviewList reviews={reviews} />
+      
+      <ReviewForm onSubmit={handleReviewSubmit} value={newReview} onChange={(e) => setNewReview(e.target.value)} />
+    </div>
+  );
+};
+
+const MovieList = ({ movies }) => {
+  return (
+    <div className="movie-list">
+      {movies.map((movie, index) => (
+        <Movie key={index} movie={movie} />
+      ))}
+    </div>
+  );
+};
+
+const Stars = ({ rating }) => {
+  return (
+    <div className="stars">
+      {[...Array(5)].map((star, index) => (
+        <span key={index} className={index < rating ? "filled" : "empty"}>&#9733;</span>
+      ))}
+    </div>
+  );
+};
+
+const ReviewList = ({ reviews }) => {
+  return (
+    <div className="review-list">
+      {reviews.map((review, index) => (
+        <p key={index}>{review}</p>
+      ))}
+    </div>
+  );
+};
+
+const ReviewForm = ({ onSubmit, value, onChange }) => {
+  return (
+    <form onSubmit={onSubmit}>
+      <textarea value={value} onChange={onChange} placeholder="Leave a review"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+const movies = [
+  {
+    title: 'Inception',
+    imageUrl: 'https://example.com/inception.jpg',
+    synopsis: 'A thief who enters the dreams of others to steal secrets from their subconscious.',
+    rating: 4.5,
+  },
+  {
+    title: 'The Dark Knight',
+    imageUrl: 'https://example.com/dark_knight.jpg',
+    synopsis: 'When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.',
+    rating: 5,
+  },
+];
+
+const App = () => {
+  return (
+    <div className="app">
+      <h1>Movies</h1>
+      <MovieList movies={movies} />
+    </div>
+  );
+};
+
+export default App;
